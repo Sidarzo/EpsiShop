@@ -15,8 +15,23 @@ class Cart extends ChangeNotifier{
     notifyListeners();
   }
 
+  List<Product> getListProduct(){
+    return _listProduct;
+  }
+
   int getCount(){
     return _listProduct.length;
   }
+
+  double getTotalPrice(){
+    double totalPrice = 0;
+
+    for (var product in _listProduct) {
+      totalPrice += product.price;
+    }
+
+    return totalPrice;
+  }
+
 
 }

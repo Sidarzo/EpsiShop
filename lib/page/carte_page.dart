@@ -1,49 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+
+import '../model/cart.dart';
+import '../model/product.dart';
 
 // TODO
 // FAIRE LA VUE 
 // Pouvoir : Supprimer, Afficher le produit, Afficher le prix total, Nombre d'élément dans le panier
-class CartPage extends StatelessWidget {
+// class CartPage extends StatelessWidget {
+//   const CartPage({super.key});
+
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
   @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
   Widget build(BuildContext context) {
+    List<Product> cartProducts = context.watch<Cart>().getListProduct();
     return Scaffold(
       appBar: AppBar(
         title: Text('Panier Flutter Sales'),
       ),
-      body: Center(
-      child: 
+      body:
         Container(
           padding: const EdgeInsets.all(8.0),
           child: 
             Column(
               children: [
-                Text('Votre panier contient 0 élément(s)', 
+                Text('Votre panier contient ${cartProducts.length} élément(s)', 
                 style: Theme.of(context).textTheme.headline6
                 ),
-                ListTile(
-                  // leading: Image.network(""),
-                  title: Text('Product'),
-                  subtitle: Text('SubTitle'),
-                  trailing: IconButton(
-                    onPressed: (){},
-                    icon: Icon(Icons.delete),
-                  ),
-                    // Image.network('https://via.placeholder.com/60'),
-                ),
+                 ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: cartProducts.length,
+                  itemBuilder: (context, index) => ListTile(
+                    onTap:(){
+                      context.go("/product/detail",extra: cartProducts[index]);
+                    } ,
+                    title: Text(cartProducts[index].title),
+                    subtitle: Text(cartProducts[index].displayPriceInEuro()),
+                    leading: Image.network(cartProducts[index].image,width: 80,height: 80,),
+                    trailing: TextButton(child: const Text("Remove"),onPressed: (){
+                      context.read<Cart>().remove(cartProducts[index]);
+                    },),
+                  )
+              ),
                 Spacer(),
-                Text('Votre panier total est de : 333.0',
+                Text('Votre panier total est de : ${context.read<Cart>().getTotalPrice()}',
                 style: Theme.of(context).textTheme.headline6
                 )
               ],
             ),
         )
-      ),
     );
   }
 }
-
-
-

@@ -12,6 +12,11 @@ class Product{
   Product({required this.id,required this.title,required this.description,required this.price,required this.image,required this.category});
 
 
+
+    String displayPriceInEuro(){
+     return '$price €';
+    }
+
   static get(String route) async {
     // This example uses the Google Books API to search for books about http.
     // https://developers.google.com/books/docs/overview
