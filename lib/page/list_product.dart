@@ -45,9 +45,8 @@ class _ListProductState extends State<ListProduct> {
   }
 
   buildListProduct() {
-    Future<List<Product>> callAsyncFetch() => Future.delayed(const Duration(milliseconds: 10), () => Product.getProducts());
     return FutureBuilder<List<Product>>(
-        future: callAsyncFetch(),
+        future: Product.getProducts(),
         builder: (context, AsyncSnapshot<List<Product>> snapshot) {
           if (snapshot.hasData) {
             return 
@@ -55,8 +54,7 @@ class _ListProductState extends State<ListProduct> {
                 scrollDirection: Axis.vertical,
                 itemCount: snapshot.data?.length,
                 itemBuilder: (context, i) {
-                  return buildRow(snapshot.data![i]);
-                 
+                  return buildRow(snapshot.data![i]);   
                 }
             );
           } else {
@@ -64,9 +62,9 @@ class _ListProductState extends State<ListProduct> {
               children: const [
                 Center(child: CircularProgressIndicator(),)]);
           }
-        });
+        }
+      );
   }
-
   buildRow(Product product) {
     return ListTile(
       leading: Hero(tag: product.id.toString(),child: Image.network(product.image, scale: 15.0,)),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parpin/model/product.dart';
-// TODO
-// AJOUTER LE RATING (dispo dans l'api)
-// SOUS FORME D'ETOILE
+import 'package:provider/provider.dart';
+
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key, required this.product});
   final Product product;
@@ -31,7 +30,12 @@ class DetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(product.price.toString()),
-              ElevatedButton(onPressed: (){}, child: Text('Ajouter'))
+              ElevatedButton(onPressed: (){}, child: const Text('Ajouter'))
+            ],
+          ),
+          Row(
+            children: [
+              product.buildRatingBar(),
             ],
           )
        ],

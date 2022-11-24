@@ -5,12 +5,6 @@ import 'package:provider/provider.dart';
 import '../model/cart.dart';
 import '../model/product.dart';
 
-// TODO
-// FAIRE LA VUE 
-// Pouvoir : Supprimer, Afficher le produit, Afficher le prix total, Nombre d'élément dans le panier
-// class CartPage extends StatelessWidget {
-//   const CartPage({super.key});
-
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
@@ -24,7 +18,7 @@ class _CartPageState extends State<CartPage> {
     List<Product> cartProducts = context.watch<Cart>().getListProduct();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Panier Flutter Sales'),
+        title: const Text('Panier Flutter Sales'),
       ),
       body:
         Container(
@@ -51,7 +45,7 @@ class _CartPageState extends State<CartPage> {
                     },),
                   )
               ),
-                Spacer(),
+                const Spacer(),
                 Text('Votre panier total est de : ${context.read<Cart>().getTotalPrice()}',
                 style: Theme.of(context).textTheme.headline6
                 )
