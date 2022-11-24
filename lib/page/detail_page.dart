@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:parpin/model/product.dart';
 import 'package:provider/provider.dart';
 
+import '../model/cart.dart';
+
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key, required this.product});
   final Product product;
@@ -30,12 +32,13 @@ class DetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(product.price.toString()),
-              ElevatedButton(onPressed: (){}, child: const Text('Ajouter'))
+              ElevatedButton(onPressed: ()=> context.read<Cart>().add(product) , child: const Text('Ajouter'))
             ],
           ),
           Row(
             children: [
               product.buildRatingBar(),
+              Text(product.rating.count.toString(), style: Theme.of(context).textTheme.headline6)
             ],
           )
        ],
