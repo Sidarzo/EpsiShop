@@ -6,7 +6,7 @@ Projet de cours B3 DEVOPS réalisé par Rimbaud Cyprien.
 
 flutter pub get pour récupérer les packages installés.
 
-Packages utilisé :
+Packages :
 
 <ul>
   <li>http: ^0.13.5
