@@ -1,16 +1,16 @@
-# parpin
+# EpsiShop
 
-A new Flutter project.
+Projet de cours B3 DEVOPS réalisé par Rimbaud Cyprien.
 
-## Getting Started
+# Installation
 
-This project is a starting point for a Flutter application.
+flutter pub get pour récupérer les packages installés.
 
-A few resources to get you started if this is your first Flutter project:
+Packages utilisé :
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<ul>
+  <li>http: ^0.13.5
+  <li>go_router: ^5.1.6
+  <li>provider: ^6.0.4
+  <li>flutter_rating_bar: ^4.0.1
+</ul>

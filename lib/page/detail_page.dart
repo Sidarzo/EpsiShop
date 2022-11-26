@@ -32,7 +32,7 @@ class DetailPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(product.price.toString()),
-              ElevatedButton(onPressed: ()=> context.read<Cart>().add(product) , child: const Text('Ajouter'))
+              ElevatedButton(onPressed: ()=> context.read<Cart>().add(product), child: const Text('Ajouter'))
             ],
           ),
           Row(
